@@ -50,11 +50,19 @@ module.exports = {
       .update({ _id: postId }, { $inc: { pv: 1 } })
       .exec()
   },
-  // 通过文章 id 获取一篇原生文章（编辑文章）
+  // 通过文章 id 获取一篇原生文章（进入编辑文章页面）
   getRawPostById (postId) {
     return Post
       .findOne({ _id: postId })
       .populate({ path: 'author', model: 'User' })
       .exec()
   },
+  // 通过文章 id 编辑文章
+  updatePostById (postId, data) {
+    return Post.update({ _id: postId }, { $set: data }).exec()
+  },
+  // 通过文章 id 删除文章
+  deletePostById (postId) {
+    return Post.deleteOne({ _id: postId }).exec()
+  }
 }
