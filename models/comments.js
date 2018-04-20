@@ -2,11 +2,15 @@ const marked = require('marked')
 const Comment = require('../lib/mongo').Comment
 
 Comment.plugin('contentToHtml', {
-  afterFindOne (comments) {
-    return comments.map(function (comment) {
-      comment.content = marked(comment.content)
-      return comment
-    })
+  // afterFind (comments) {
+  //   return comments.map(function (comment) {
+  //     comment.content = marked(comment.content)
+  //     return comment
+  //   })
+  // },
+  afterFindOne (comment) {
+    comment.content = marked(comment.content)
+    return comment
   }
 })
 
