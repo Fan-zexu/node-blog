@@ -16,3 +16,7 @@ selenium-debug.log
 *.njsproj
 *.sln
 package-lock.json
+
+config/*
+!config/default.*
+coverage
