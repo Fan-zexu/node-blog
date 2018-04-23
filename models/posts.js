@@ -88,8 +88,8 @@ module.exports = {
     return Post.update({ _id: postId }, { $set: data }).exec()
   },
   // 通过用户 id 和 文章 id 删除文章
-  deletePostById (author, postId) {
-    return Post.deleteOne({ author, _id: postId }).exec()
+  deletePostById (postId) {
+    return Post.deleteOne({ _id: postId }).exec()
       .then((res) => {
         // 文章删除后，再删除该文章下的所有留言
         if (res.result.ok && res.result.n > 0) {
