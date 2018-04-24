@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "supervisor index",
+    "start:p": "NODE_ENV=production pm2 start index.js --name 'nodeblog'",
     "test": "istanbul cover _mocha"
   },
   "repository": {
